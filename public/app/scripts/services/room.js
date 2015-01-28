@@ -13,12 +13,8 @@ angular.module('publicApp')
 
     var iceConfig = {
                   iceServers: [
-                    {url:'stun:130.211.147.65:1352'},
-                    {url:'turn:130.211.147.65:1352?transport=udp'},
-                    {url:'turn:130.211.147.65:1352?transport=tcp'},
-                    {url:'turn:numb.viagenie.ca', username: 'tim@cloud.com', credential: '3oRZgIwu3zpOGvjvv8NH'}
+                    {url:'stun.l.google.com:19302'},
                   ],
-                  iceTransports: 'relay'
                 },
         peerConnections = {},
         currentId, roomId,
