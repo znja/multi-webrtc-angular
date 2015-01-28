@@ -13,7 +13,7 @@ angular.module('publicApp')
 
     var iceConfig = {
                   iceServers: [
-                    {url:'stun.l.google.com:19302'},
+                    {url:'stun:stun.l.google.com:19302'},
                   ],
                 },
         peerConnections = {},
