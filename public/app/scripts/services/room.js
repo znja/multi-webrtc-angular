@@ -11,7 +11,7 @@
 angular.module('publicApp')
   .factory('Room', function ($rootScope, $q, Io, config) {
 
-    var iceConfig = { config.iceServers }
+    var iceConfig = config.iceServers,
         peerConnections = {},
         currentId, roomId,
         stream;
