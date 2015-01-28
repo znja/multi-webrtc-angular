@@ -22,6 +22,7 @@ angular.module('publicApp')
     $scope.start = function (constraint) {
       VideoStream.get(constraint)
       .then(function (s) {
+        $scope.clicked = true
         stream = s;
         Room.init(s);
         stream = URL.createObjectURL(stream);

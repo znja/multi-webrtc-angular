@@ -1,11 +1,3 @@
-<div style="padding: 17px; padding-top: 0px;">
-  <span ng-hide="error">
-  Allow the browser to use your web cam and after that share the URL from the address bar with the people you want to talk with.
-  </span>
-  <br>
-  <span ng-bind="error"></span>
-</div>
-
 <div class="video-wrapper">
   <video-player class="col-md-4" ng-repeat="peer in peers" vid-src="{{peer.stream}}"></video-player>
 </div>
@@ -15,6 +7,7 @@
     <video ng-src="{{getLocalVideo()}}" autoplay muted></video>
   </div>
 </div>
+
 <div id="name" class='row' ng-hide='clicked'>
   <button class="btn btn-default" ng-click="start({video: true, audio: true})"> Video/Audio </button>
   <button class="btn btn-default" ng-click="start({video: false, audio: true})"> Audio </button>
