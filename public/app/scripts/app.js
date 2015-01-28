@@ -31,7 +31,7 @@ angular
 angular.module('publicApp')
   .constant('config', {
       SIGNALIG_SERVER_URL: '',
-      iceServers: [ {url:'stun:stun.l.google.com:19302'},
+      iceServers: {iceServers : [ {url:'stun:stun.l.google.com:19302'},
                     {
                       url: 'turn:numb.viagenie.ca',
                       credential: 'muazkh',
@@ -48,6 +48,7 @@ angular.module('publicApp')
                       username: '28224511:1379330808'
                     }
                   ]
+                }
   });
 
 Object.setPrototypeOf = Object.setPrototypeOf || function(obj, proto) {
