@@ -12,7 +12,7 @@ angular.module('publicApp')
     var stream;
     return {
       get: function (constraints) {
-        if (stream) {
+        if (stream || !constraints) {
           return $q.when(stream);
         } else {
           var d = $q.defer();

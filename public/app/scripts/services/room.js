@@ -26,7 +26,8 @@ angular.module('publicApp')
       }
       var pc = new RTCPeerConnection(iceConfig);
       peerConnections[id] = pc;
-      pc.addStream(stream);
+      if(stream)
+        pc.addStream(stream);
       pc.onicecandidate = function (evnt) {
         socket.emit('msg', { by: currentId, to: id, ice: evnt.candidate, type: 'ice' });
       };
