@@ -14,25 +14,23 @@ angular.module('publicApp')
       $scope.error = 'WebRTC is not supported by your browser. You can try the app with Chrome and Firefox.';
       return;
     }
+    if (!$routeParams.roomId)
+      $location.path('/room/' + uuid());
 
     var stream;
 
-    VideoStream.get()
-    .then(function (s) {
-      stream = s;
-      Room.init(stream);
-      stream = URL.createObjectURL(stream);
-      if (!$routeParams.roomId) {
-        Room.createRoom()
-        .then(function (roomId) {
-          $location.path('/room/' + roomId);
-        });
-      } else {
+    $scope.start = function (constraint) {
+      VideoStream.get(constraint)
+      .then(function (s) {
+        stream = s;
+        Room.init(s);
+        stream = URL.createObjectURL(stream);
         Room.joinRoom($routeParams.roomId);
-      }
-    }, function () {
-      $scope.error = 'No audio/video permissions. Please refresh your browser and allow the audio/video capturing.';
-    });
+        }, function () {
+          $scope.error = 'No audio/video permissions. Please refresh your browser and allow the audio/video capturing.';
+      });
+    };
+
     $scope.peers = [];
     Room.on('peer.stream', function (peer) {
       console.log('Client connected, adding new stream');

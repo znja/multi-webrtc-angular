@@ -11,15 +11,13 @@ angular.module('publicApp')
   .factory('VideoStream', function ($q) {
     var stream;
     return {
-      get: function () {
+      get: function (constraints) {
         if (stream) {
           return $q.when(stream);
         } else {
           var d = $q.defer();
-          navigator.getUserMedia({
-            video: true,
-            audio: true
-          }, function (s) {
+          navigator.getUserMedia(constraints,
+            function (s) {
             stream = s;
             d.resolve(stream);
           }, function (e) {

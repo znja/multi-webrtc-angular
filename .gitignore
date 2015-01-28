@@ -14,3 +14,4 @@ results
 public/dist
 npm-debug.log
 node_modules
+public/app/components
